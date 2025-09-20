@@ -1,3 +1,5 @@
+import java.sql.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class VideoClub {
@@ -33,6 +35,17 @@ public class VideoClub {
             listaAlquiler.add(a);
         }
         return listaAlquiler;
+    }
+
+    //metodo para devolver una lista con los clientes que tienen alquileres vencidos.
+    public ArrayList<Cliente>clientesVencidos(){
+        ArrayList<Cliente>listaClientesVencidos=new ArrayList<>();
+        for(Alquiler a:alquileres){
+            if(a.getFechaDevolucion().isBefore(LocalDate.now())){
+              listaClientesVencidos.add(a.getCliente());
+            }
+        }
+        return listaClientesVencidos;
     }
 
 

@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -17,17 +18,29 @@ public class Main {
                 Se debe proveer además la funcionalidad necesaria para permitir conocer quiénes son los
         clientes que poseen alquileres vencidos.*/
         LocalDate fechaAlquiler = LocalDate.of(2000, 2, 14);
-        LocalDate fechaDevolucion = LocalDate.of(2000, 2, 18);
+        LocalDate fechaDevolucion = LocalDate.of(2025, 9, 15);
 
         Pelicula p1 = new Pelicula("StarWars", "aventura,Ciencia Ficcion", 0);
         Cliente c1 = new Cliente("ivan", 22086517);
-        Cliente c2=new Cliente("Elina",23322408);
-        Auto au1=new Auto("ford",123,"AA123AA","NAFTA");
+        Cliente c2 = new Cliente("Elina", 23322408);
+        Auto au1 = new Auto("ford", 123, "AA123AA", "NAFTA");
 
-        Alquiler alq1=new Alquiler(fechaAlquiler,fechaDevolucion,c1,p1);
-        Alquiler alq2=new Alquiler(fechaAlquiler,fechaDevolucion,c2,au1);
-
+        Alquiler alq1 = new Alquiler(fechaAlquiler, fechaDevolucion, c1, p1);
+        Alquiler alq2 = new Alquiler(fechaAlquiler, fechaDevolucion, c2, au1);
+        VideoClub video1 = new VideoClub("blockbuster");
         System.out.println(alq1);
         System.out.println(alq2);
+
+
+        ArrayList<Cliente> clientesVencidos = video1.clientesVencidos();
+
+        // Recorrer la lista e imprimir cada cliente
+        for (Cliente cliente : clientesVencidos) {
+            System.out.println(cliente.getNombre());
+        }
     }
 }
+
+//NO ESTARIA FUNCIONANDO EL METODO sePuedealquilar(). INSTANCIO PELICULA CON 0 CANTIDAD E IGUAL
+// PERMITE EL ALQUILER. QUE ESTOY HACIENDO MAL? AUN FALTA EL DESARROLLO PARA LA DEVOLUVION,
+// TAMPOCO EL clientesVencidos probe con .Before y .After
