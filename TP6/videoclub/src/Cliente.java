@@ -36,4 +36,8 @@ public class Cliente {
     public void setDni(int dni) {
         this.dni = dni;
     }
+
+    public String toString(){
+        return "nombre "+this.getNombre();
+    }
 }
