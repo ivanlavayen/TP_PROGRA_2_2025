@@ -4,14 +4,16 @@ public class Cliente {
     private String nombreCliente;
     private String domicilio;
     private int dni;
+    private double descuento;
     private ArrayList<String>autoreFavoritos;
-    private ArrayList<String>generosFavoritos;
+   protected ArrayList<String>generosFavoritos;//esta protected para acceder desde la sublase.
     private ArrayList<Articulo>comprasRealizadas;
 
-    public Cliente(String nombreCliente, String domicilio, int dni) {
+    public Cliente(String nombreCliente, String domicilio, int dni, double descuento) {
         this.nombreCliente = nombreCliente;
         this.domicilio = domicilio;
         this.dni = dni;
+        this.descuento = descuento;
         this.autoreFavoritos=new ArrayList<>();
         this.generosFavoritos=new ArrayList<>();
         this.comprasRealizadas=new ArrayList<>();
@@ -40,7 +42,12 @@ public class Cliente {
     public void setDni(int dni) {
         this.dni = dni;
     }
-
+    public double getDescuento() {
+        return descuento;
+    }
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
 
     //----------METODOS ESPECIALES----------------------
     //Metodo para agregar autore favoritos controlando que no este el el arreglo
@@ -67,4 +74,21 @@ public class Cliente {
     public boolean leGusta(Articulo articulo){
         return autoreFavoritos.contains(articulo.getAutor());
     }
+
+    public boolean equals(Object o){
+        try{
+            Cliente otrocliente=(Cliente) o;
+            return otrocliente.getDni()==((Cliente) o).getDni();
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+
+    //SABER SI YA COMPRO EL ARTICULO
+    public boolean yaCompro(Articulo articulo){
+        return comprasRealizadas.contains(articulo);
+    }
+
+
 }

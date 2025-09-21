@@ -7,16 +7,16 @@ public class Articulo {
     private int cantidadPaginas;
     private String resumen;
     private ArrayList<String>generos;
-    private double descuento;
+
 
     public Articulo(String nombreArticulo, String autor, double precio,
-                    int cantidadPaginas, String resumen, double descuento) {
+                    int cantidadPaginas, String resumen) {
         this.nombreArticulo = nombreArticulo;
         this.autor = autor;
         this.precio = precio;
         this.cantidadPaginas = cantidadPaginas;
         this.resumen = resumen;
-        this.descuento = descuento;
+
         this.generos=new ArrayList<>();
     }
 
@@ -60,13 +60,9 @@ public class Articulo {
         this.resumen = resumen;
     }
 
-    public double getDescuento() {
-        return descuento;
-    }
 
-    public void setDescuento(double descuento) {
-        this.descuento = descuento;
-    }
+
+
     //----------METODOS ESPECIALES ----------------
 
 
@@ -84,6 +80,14 @@ public class Articulo {
         return generos.contains(genero);
     }
 
-
+   public boolean equals(Object o){
+        try{
+            Articulo otroArticulo= (Articulo) o;
+            return otroArticulo.getNombreArticulo().equals(((Articulo) o).getNombreArticulo());
+        }
+        catch (Exception e) {
+            return false;
+        }
+   }
 
 }
